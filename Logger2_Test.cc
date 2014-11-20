@@ -18,11 +18,9 @@ void func( Logger2& log){
 int main()
 {
 	Logger2 log("logFile.txt");
-	//log.setLogLevel(Logger2::ERROR);
+	log.setLogLevel(Logger2::ERROR);
 	log.debug("okok");
-
 	log.error("This is Error msg");
-
 	func(log);
 
 	return 0;

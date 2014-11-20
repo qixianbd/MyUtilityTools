@@ -1,3 +1,1 @@
-debug:In file (../Logger2_Test.cc) line (23) function (main) :okok
-error:In file (../Logger2_Test.cc) line (25) function (main) :This is Error msg
-info:In file (../Logger2_Test.cc) line (17) function (func) :this is in func
+error:In file (../Logger2_Test.cc) line (23) function (main) :This is Error msg

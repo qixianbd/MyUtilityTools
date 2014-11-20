@@ -11,15 +11,17 @@ void Logger2::logMsg(LOGLEVEL theLevel, const std::string& msg) {
 }
 
 void Logger2::logMsg(LOGLEVEL theLevel, const char* msg) {
-	if(consoleOutput){
-		if(theLevel == ERROR){
-			std::cerr << msg << "\n" << std::flush;
+	if(logLevel <= theLevel){
+		if(consoleOutput){
+			if(theLevel == ERROR){
+				std::cerr << msg << "\n" << std::flush;
+			}
+			else{
+				std::cout <<  msg << "\n" << std::flush;
+			}
 		}
-		else{
-			std::cout <<  msg << "\n" << std::flush;
-		}
+		logStream <<  msg << "\n" << std::flush;
 	}
-	logStream <<  msg << "\n" << std::flush;
 }
 
 void Logger2::setLogLevel(LOGLEVEL level) {
@@ -52,13 +54,15 @@ void Logger2::error(const std::string& msg, const char* fileName, int  lineNumbe
 
 void Logger2::logPrefix(LOGLEVEL level, const char* prefix, const char* fileName, int lineNumber, const char* funcName) {
 	if(logLevel <= level ){
-		if(level == ERROR){
-			std::cerr << prefix << ":" << "In file (" << fileName << ") line (" << lineNumber << ") function (" << funcName << ") :" << std::flush;
+		if(consoleOutput == true){
+			if(level == ERROR){
+				std::cerr << prefix << ":" << "In file (" << fileName << ") line (" << lineNumber << ") function (" << funcName << ") :" << std::flush;
+			}
+			else{
+				std::cout << prefix << ":" << "In file (" << fileName << ") line (" << lineNumber << ") function (" << funcName << ") :" << std::flush;
+			}
 		}
-		else{
-			std::cout << prefix << ":" << "In file (" << fileName << ") line (" << lineNumber << ") function (" << funcName << ") :" << std::flush;
-		}
+		logStream << prefix << ":" << "In file (" << fileName << ") line (" << lineNumber << ") function (" << funcName << ") :" << std::flush;
 	}
-	logStream << prefix << ":" << "In file (" << fileName << ") line (" << lineNumber << ") function (" << funcName << ") :" << std::flush;
 }
 
