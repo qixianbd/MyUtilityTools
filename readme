@@ -1,0 +1,2 @@
+logger2.h:
+			 logger2 class, which can support different log levels. 
